@@ -1,0 +1,87 @@
+{
+  "name": "@mblancodev/react-ts-timeline-range",
+  "private": false,
+  "version": "0.0.0",
+  "description": "React/Typescript Timeline Range Component",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "author": {
+    "name": "Manuel Blanco",
+    "email": "manuel.22.lamas@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react-component",
+    "react",
+    "slider",
+    "timeline",
+    "component",
+    "time-picker",
+    "react-slider",
+    "range-slider",
+    "typescript",
+    "range"
+  ],
+  "peerDependencies": {
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "dependencies": {
+    "d3-scale": "^4.0.2",
+    "date-fns": "^3.6.0",
+    "react-compound-slider": "^3.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^4.0.8",
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "glob": "^10.3.15",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mblancodev/react-ts-timeline-range.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mblancodev/react-ts-timeline-range/issues"
+  },
+  "homepage": "https://github.com/mblancodev/react-ts-timeline-range#readme"
+}
