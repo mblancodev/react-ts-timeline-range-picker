@@ -22,7 +22,7 @@ import "./assets/main.css";
 export interface TimelineRange {
   step: number;
   weekStartsOn?: Day;
-  ticksCount: number;
+  ticksCount?: number;
   values: DateValuesType;
   timelineInterval: [Date, Date];
   mode: 1 | 2 | 3 | CustomMode | undefined;
@@ -41,7 +41,7 @@ const TimelineRange = (props: TimelineRange) => {
 
   const dateTicks = scaleTime()
     .domain(props.timelineInterval)
-    .ticks(props.ticksCount)
+    .ticks(props.ticksCount || 48)
     .map((t) => +t);
 
   const domain = props.timelineInterval.map((t) => Number(t));
