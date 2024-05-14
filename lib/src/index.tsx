@@ -25,7 +25,7 @@ export interface TimelineRange {
   ticksCount?: number;
   values: DateValuesType;
   timelineInterval: [Date, Date];
-  mode: 1 | 2 | 3 | CustomMode | undefined;
+  mode?: 1 | 2 | 3 | CustomMode | undefined;
   onChange: (values: DateValuesType) => void;
   disabledIntervals?: Array<{ start: Date; end: Date }>;
   onUpdateCallback: (p: { error: boolean; time: readonly Date[] }) => void;
@@ -90,9 +90,9 @@ const TimelineRange = (props: TimelineRange) => {
       <Slider
         domain={domain}
         step={props.step}
-        mode={props.mode}
         onUpdate={onUpdate}
         values={props.values}
+        mode={props.mode || 3}
         onChange={props.onChange}
         rootStyle={{ position: "relative", width: "100%" }}
       >
