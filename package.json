@@ -1,5 +1,5 @@
 {
-  "name": "@mblancodev/react-ts-timeline-range",
+  "name": "@mblancodev/react-ts-timeline-range-picker",
   "private": false,
   "version": "0.0.0",
   "description": "React/Typescript Timeline Range Component",
@@ -78,10 +78,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mblancodev/react-ts-timeline-range.git"
+    "url": "git+https://github.com/mblancodev/react-ts-timeline-range-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/mblancodev/react-ts-timeline-range/issues"
+    "url": "https://github.com/mblancodev/react-ts-timeline-range-picker/issues"
   },
-  "homepage": "https://github.com/mblancodev/react-ts-timeline-range#readme"
+  "homepage": "https://github.com/mblancodev/react-ts-timeline-range-picker#readme"
 }

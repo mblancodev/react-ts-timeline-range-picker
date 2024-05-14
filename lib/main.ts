@@ -1,1 +1,1 @@
-export { default as TimelineRange } from "./src/index";
+export { default as TimelineRangePicker } from "./src/index";
