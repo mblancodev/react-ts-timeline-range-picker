@@ -4,7 +4,6 @@ import {
   isBefore,
   addMinutes,
   differenceInMilliseconds,
-  Day,
 } from "date-fns";
 
 export const getTimelineConfig =
@@ -52,11 +51,4 @@ export const getNowConfig = ([startTime, endTime]: [Date, Date]) => {
 
   return { id: "now-track", source, target };
 };
-
-
-export const formatTick = (ms: number | Date, weekStartsOn: Day = 0) => {
-  return format(new Date(ms), "HH:mm", {
-    weekStartsOn,
-  });
-}
 

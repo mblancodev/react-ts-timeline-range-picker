@@ -8,27 +8,28 @@ import {
   Handles,
   CustomMode,
 } from "react-compound-slider";
-import { Day } from "date-fns";
 import { scaleTime } from "d3-scale";
+import { format, Day } from "date-fns";
 import { Tick } from "./components/Tick";
 import { Track } from "./components/Track";
 import { Handle } from "./components/Handle";
 import { SliderRail } from "./components/SliderRail";
+import { getFormattedBlockedIntervals } from "./helpers";
 import { DateValuesType, TrackPointValue } from "./types";
-import { formatTick, getFormattedBlockedIntervals } from "./helpers";
 
 import "./assets/main.css";
 
 export interface TimelineRange {
-  step: number;
+  value: DateValuesType;
+  timelineInterval: [Date, Date];
+  onChange: (values: DateValuesType) => void;
+  // Optional props
+  step?: number;
   weekStartsOn?: Day;
   ticksCount?: number;
-  values: DateValuesType;
-  timelineInterval: [Date, Date];
   mode?: 1 | 2 | 3 | CustomMode | undefined;
-  onChange: (values: DateValuesType) => void;
   disabledIntervals?: Array<{ start: Date; end: Date }>;
-  onUpdateCallback: (p: { error: boolean; time: readonly Date[] }) => void;
+  onUpdateCallback?: (p: { error: boolean; time: readonly Date[] }) => void;
 }
 
 const TimelineRange = (props: TimelineRange) => {
@@ -71,6 +72,7 @@ const TimelineRange = (props: TimelineRange) => {
 
   const onUpdate = (newTime: DateValuesType) => {
     const { onUpdateCallback } = props;
+    if (!onUpdateCallback) return;
 
     if (disabledIntervals?.length) {
       const isValuesNotValid = disabledIntervals.some(({ source, target }) =>
@@ -85,14 +87,20 @@ const TimelineRange = (props: TimelineRange) => {
     onUpdateCallback({ error: false, time: formattedNewTime });
   };
 
+  const formatTick = (ms: number | Date) => {
+    return format(new Date(ms), "HH:mm", {
+      weekStartsOn: props.weekStartsOn || 0,
+    });
+  };
+
   return (
     <div className="react_ts_tr__time_range_container">
       <Slider
         domain={domain}
-        step={props.step}
         onUpdate={onUpdate}
-        values={props.values}
+        values={props.value}
         mode={props.mode || 3}
+        step={props.step || 10}
         onChange={props.onChange}
         rootStyle={{ position: "relative", width: "100%" }}
       >
