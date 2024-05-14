@@ -1,0 +1,124 @@
+:root {
+  --react-ts-tr--gray: #C8CACC;
+  --react-ts-tr--highlight-tap: #000000;
+  --react-ts-tr--rail-bg: #F5F7FA;
+  --react-ts-tr--handle-bg: #FFFFFF;
+  --react-ts-tr--handle-bg--disabled: #666;
+  --react-ts-tr--track--valid: rgb(98, 203, 102);
+  --react-ts-tr--track--not-valid: rgb(214, 0, 11);
+  --react-ts-tr--tick-label: #77828C;
+  --react-ts-tr--track--disabled: repeating-linear-gradient(-45deg, transparent, transparent 3px, #D0D3D7 4px, #D0D3D7 2px);
+}
+
+.react_ts_tr__time_range_container {
+  padding: 30px 10% 0;
+  height: 70px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.react_ts_tr__keyboard_handle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.react_ts_tr__track {
+  position: absolute;
+  transform: translate(0%, -50%);
+  height: 50px;
+  cursor: pointer;
+  transition: background-color .15s ease-in-out, border-color .15s ease;
+  z-index: 3;
+}
+
+.react_ts_tr__track__disabled {
+  position: absolute;
+  z-index: 1;
+  border-left: 1px solid var(--react-ts-tr--gray);
+  border-right: 1px solid var(--react-ts-tr--gray);
+  background: var(--react-ts-tr--track--disabled);
+}
+
+.react_ts_tr__rail__outer,
+.react_ts_tr__rail__inner {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  transform: translate(0%, -50%);
+  cursor: pointer;
+}
+
+.react_ts_tr__rail__inner {
+  pointer-events: none;
+  background-color: var(--react-ts-tr--rail-bg);
+  border-bottom: 1px solid var(--react-ts-tr--gray);
+}
+
+.react_ts_tr__handle_wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -webkit-tap-highlight-color: var(--react-ts-tr--highlight-tap);
+  z-index: 6;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.react_ts_tr__handle_container {
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 10px;
+  height: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0,0,0, 0.4);
+  background-color: var(--react-ts-tr--handle-bg);
+}
+
+.react_ts_tr__handle_container__disabled {
+  background-color: var(--react-ts-tr--handle-bg--disabled);
+}
+
+.react_ts_tr__handle_marker {
+  width: 2px;
+  height: 12px;
+  margin: auto;
+  border-radius: 2px;
+  background-color: var(--react-ts-tr--track--valid);
+  transition: background-color .2s ease;
+}
+
+.react_ts_tr__handle_marker__error {
+  background-color: var(--react-ts-tr--track--not-valid);
+}
+
+.react_ts_tr__tick_marker,
+.react_ts_tr__tick_marker__large {
+  position: absolute;
+  margin-top: 20px;
+  width: 1px;
+  height: 5px;
+  background-color: var(--react-ts-tr--gray);
+  z-index: 2;
+}
+
+.react_ts_tr__tick_marker__large {
+  margin-top: 15px;
+  height: 10px;
+}
+
+.react_ts_tr__tick_label {
+  position: absolute;
+  margin-top: 28px;
+  font-size: 10px;
+  text-align: center;
+  z-index: 2;
+  color: var(--react-ts-tr--tick-label);
+}
