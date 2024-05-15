@@ -1,5 +1,4 @@
-import React, { useMemo } from "react";
-
+import { useMemo } from "react";
 import {
   Rail,
   Ticks,
@@ -32,10 +31,10 @@ export interface TimelineRange {
   onUpdateCallback?: (p: { error: boolean; time: readonly Date[] }) => void;
 }
 
-const TimelineRange = (props: TimelineRange) => {
+const TimelineRangePicker = (props: TimelineRange) => {
   const disabledIntervals = useMemo(() => {
     return getFormattedBlockedIntervals(
-      props.disabledIntervals,
+      props.disabledIntervals || [],
       props.timelineInterval
     );
   }, [props.disabledIntervals, props.timelineInterval]);
@@ -175,4 +174,4 @@ const TimelineRange = (props: TimelineRange) => {
   );
 };
 
-export default TimelineRange;
+export default TimelineRangePicker;

@@ -30,6 +30,9 @@
     "typescript",
     "range"
   ],
+  "engines": {
+    "node": ">=18.16"
+  },
   "peerDependencies": {
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
