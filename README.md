@@ -1,5 +1,7 @@
 # react-ts-timeline-range-picker
 
+This is an updated fork of `@marenaud/react-timeline-range-slider`
+
 ## Installation
 
 ```bash
@@ -18,16 +20,16 @@ yarn add @mblancodev/react-ts-timeline-range-picker
 
 ```tsx
 import React from 'react';
-import { addDays } from 'date-fns'
+import { startOfDay, endOfDay } from 'date-fns'
 import { TimelineRangePicker } from '@mblancodev/react-ts-timeline-range-picker';
 
 function App() {
   return (
     <div>
-      <TimelineRangePicker 
-        values={[]}
+      <TimelineRangePicker
+        value={[]}
         onChange={() => {}}
-        timelineInterval={[new Date(), addDays(new Date(), 1)]} />
+        timelineInterval={[startOfDay(new Date()), endOfDay(new Date())]} />
     </div>
   );
 }
@@ -45,6 +47,56 @@ import "@mblancodev/react-ts-timeline-range-picker/assets/main.css"
 
 [...]
 ```
+
+### Advance example
+
+```tsx
+import { DateValuesType } from "@mblancodev/react-ts-timeline-range-picker/dist/src/types";
+import { TimelineRangePicker } from "@mblancodev/react-ts-timeline-range-picker";
+import "@mblancodev/react-ts-timeline-range-picker/dist/assets/main.css";
+import { startOfDay, endOfDay, addHours } from "date-fns";
+import { DateTime } from "luxon";
+import { useState } from "react";
+
+export const RangeTestPage = () => {
+  const now = new Date();
+
+  const [value, setValue] = useState<DateValuesType>([
+    addHours(now, 2).getTime(),
+    addHours(now, 4).getTime(),
+  ]);
+
+  function handleChange(values: DateValuesType) {
+    setValue(values);
+  }
+
+  const [start, end] = value.map((t) =>
+    DateTime.fromJSDate(new Date(t)).toFormat("HH:mm")
+  );
+
+  return (
+    <div className="container my-12 p-4">
+      <p className="px-8 translate-x-24">
+        Selected: {DateTime.fromJSDate(now).toFormat("LLL dd")} at {start} - {end}
+      </p>
+      <TimelineRangePicker
+        step={30}
+        value={value}
+        disabledIntervals={[
+          {
+            start: addHours(startOfDay(now), 2),
+            end: addHours(startOfDay(now), 3),
+          },
+        ]}
+        onChange={handleChange}
+        timelineInterval={[startOfDay(now), endOfDay(now)]}
+      />
+    </div>
+  );
+};
+
+```
+
 ## Expectations for the future
 
 I intent to add the following features in the near future:
